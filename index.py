@@ -14,11 +14,14 @@ __email__ = "anthony@byprog.com"
 __license__ = "MIT"
 __version__ = "1.0"
 
+import os
 import requests
 from flask import Flask, request, jsonify, render_template
 
-# init flask app and import helper
+# init flask app and env variables
 app = Flask(__name__)
+host = os.getenv("HOST")
+port = os.getenv("PORT")
 
 @app.route("/", methods=['GET'])
 def search():
@@ -42,7 +45,7 @@ def search():
     if query :
         # query search engine
         try :
-            r = requests.post('http://localhost:5000/search', data = {
+            r = requests.post('http://%s:%s/search'%(host, port), data = {
                 'query':query,
                 'hits':hits,
                 'start':start
