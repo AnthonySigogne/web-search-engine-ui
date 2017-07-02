@@ -4,7 +4,7 @@
 UI of the simple web search engine https://github.com/AnthonySigogne/web-search-engine
 
 ## REQUIREMENTS
-This tool requires *Python3+*.
+This tool requires *Python3+* and the web search engine API (see link above).
 
 ## INSTALL AND RUN
 
@@ -24,7 +24,7 @@ Where :
 
 To run in debug mode, prepend `FLASK_DEBUG=1` to the command :
 ```
-FLASK_DEBUG=1 ... flask run
+FLASK_DEBUG=1 ... flask run --port 80
 ```
 
 ### WITH DOCKER

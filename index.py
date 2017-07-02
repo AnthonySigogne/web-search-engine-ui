@@ -28,6 +28,8 @@ def search():
     Method : POST or GET (no query)
     Form data :
         - query : the search query
+        - hits : the number of hits returned by query
+        - start : the start of hits
     Return a template view with the list of relevant URLs.
     """
     # GET data
