@@ -3,10 +3,14 @@
 
 UI of the simple web search engine https://github.com/AnthonySigogne/web-search-engine
 
-## REQUIREMENTS
-This tool requires *Python3+* and the web search engine API (see link above).
+## DEMO
+A demo can be found here : http://searchengine.byprog.com/
+About 500 French URLs and 500 English URLs of the news network http://www.france24.com/ have been indexed.
 
 ## INSTALL AND RUN
+
+### REQUIREMENTS
+This tool requires *Python3+* and the web search engine API (see link above).
 
 ### WITH PIP
 ```
