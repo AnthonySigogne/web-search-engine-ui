@@ -53,9 +53,10 @@ def search():
         except :
             return "Error, check your installation"
 
-        # get data
+        # get data and compute range of results pages
         data = r.json()
-        nb_pages = int(float(data["total"])/float(hits))+1
+        i = start/hits
+        range_pages = range(i-5,i+5) if i >= 6 else range(0,10)
 
         # show the list of matching results
         return render_template('layout.html', query=query,
@@ -63,7 +64,7 @@ def search():
             total=data["total"],
             hits=hits,
             start=start,
-            nb_pages=nb_pages,
+            range_pages=range_pages,
             results=data["results"])
 
     # return homepage (no query)
