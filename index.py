@@ -55,7 +55,7 @@ def search():
 
         # get data and compute range of results pages
         data = r.json()
-        i = start/hits
+        i = int(start/hits)
         range_pages = range(i-5,i+5) if i >= 6 else range(0,10)
 
         # show the list of matching results
