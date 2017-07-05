@@ -1,7 +1,10 @@
 <!doctype html>
 <html>
   <head>
-    <title>Search engine</title>
+    <title>Search engine tool - Byprog</title>
+
+    <meta name="description" content="A simple web search engine."/>
+
     <style>[dir='ltr'],[dir='rtl']{
       unicode-bidi:-webkit-isolate;
       unicode-bidi:isolate}
@@ -2669,7 +2672,10 @@
       .lst{
         padding-top:6px}
     </style>
-  </head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script   src="https://code.jquery.com/jquery-3.2.1.slim.min.js"   integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="   crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
   <body class="srp tbo vasq" marginheight="3" topmargin="3" id="gsr">
     <div data-jiis="cc" id="doc-info">
     </div>
@@ -3903,7 +3909,7 @@
         <div class="tsf-p">
           <div class="nojsv logocont" id="logocont">
             <h1>
-              <a href="/" title="Afficher la page d'accueil de Byprog" id="logo" data-hveid="3">
+              <a href="/" title="Afficher la page d'accueil de Byprog" id="logo" data-hveid="3" style="margin-top: -20px !important;">
                 <img src="https://www.byprog.com/static/image/favicon.png" alt="Byprog" height="80">
               </a>
             </h1>
@@ -3925,7 +3931,7 @@
                     </span>
                   </button>
                   <div class="lst-c">
-                    <input class="lst lst-tbb sbibps" name="query" id="query" maxlength="2048" autocomplete="off" title="Rechercher" type="text" value="{{query}}" aria-label="Rechercher">
+                    <input class="lst lst-tbb sbibps" name="query" id="query" maxlength="2048" autocomplete="off" title="Rechercher" type="text" value="{{query}}" aria-label="Rechercher" placeholder="Type a query (example: France)">
                   </div>
                 </div>
               </div>
@@ -4068,7 +4074,7 @@
                   <div id="hdtb-msb">
                     <div>
                       <div id="hdtb-msb-vis">
-                        <div class="hdtb-mitem hdtb-msel hdtb-imb">Tous
+                        <div class="hdtb-mitem hdtb-msel hdtb-imb" style="box-sizing:content-box !important">All
                         </div>
                       </div>
                     </div>
@@ -4076,6 +4082,7 @@
                       <g-header-menu class="hdtb-mitem _eMq r-iUXJ_3aR_5z4" id="ab_options" jsl="$t t-Nfexb0d83t0;$x 0;">
                       <a class="_bMq iUXJ_3aR_5z4-_UwgkgYBDrI hdtb-dd-b" aria-haspopup="true" role="button" tabindex="0" jsaction="r.mSRaIWm1OeU" data-rtid="iUXJ_3aR_5z4" jsl="$x 1;" href="https://www.byprog.com/en" target="_blank">Byprog</a>
                       <a class="_bMq iUXJ_3aR_5z4-_UwgkgYBDrI hdtb-dd-b" aria-haspopup="true" role="button" tabindex="0" jsaction="r.mSRaIWm1OeU" data-rtid="iUXJ_3aR_5z4" jsl="$x 1;" href="https://github.com/AnthonySigogne/web-search-engine" target="_blank">About this tool</a>
+                      <a class="_Gs" href="#" data-toggle="modal" data-target="#myModal">Help</a>
                     </div>
                   </div>
                   <ol id="ab_ctls">
@@ -4083,6 +4090,36 @@
                 </div>
               </div>
               <div class="hdtb-td-c hdtb-td-h" aria-expanded="false" id="hdtbMenus" tabindex="0">
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Simple search engine tool</h4>
+              </div>
+              <div class="modal-body">
+                The goal is to index an infinite list of URLs (web pages), and then be able to quickly search relevant URLs against a query.
+                <br/><br/>
+                <b>Indexing</b><br/>
+                The indexing operation of a new URL first crawls URL, then extracts the title and main text content from the page.
+                Then, a new document representing the URL's data is saved in ElasticSearch, and goes for indexing.
+                <br/><br/>
+                <b>Searching</b><br/>
+                When searching for relevant URLs, the engine will compare the query with the data of each document (web page), and retrieve a list of URLs matching the query, sorted by relevance.
+                <br/><br/>
+                <b>Note</b>
+                <br/>This API works for a finite list of languages, see <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-lang-analyzer.html" target="_blank">here</a> for the complete list.
+                <br/><br/>
+                <b>Demo</b><br/>
+                About 500 French URLs and 500 English URLs of the news network <a href="http://www.france24.com/" target="_blank">France24</a> have been indexed.
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
@@ -4103,8 +4140,8 @@
             <div id="topabar" style="position:relative">
               <div class="ab_tnav_wrp" id="slim_appbar">
                 <div id="sbfrm_l">
-                  <div id="resultStats">Environ {{total}} résultats
-                    <nobr> ({{response_time}} secondes)&nbsp;
+                  <div id="resultStats">About {{total}} results
+                    <nobr> ({{response_time}} seconds)&nbsp;
                     </nobr>
                   </div>
                 </div>

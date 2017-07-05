@@ -2,7 +2,9 @@
 <html>
 
 <head>
-    <title>Search engine</title>
+    <title>Search engine tool - Byprog</title>
+
+    <meta name="description" content="A simple web search engine."/>
 
     <style>
         [dir='ltr'],
@@ -3132,8 +3134,10 @@
             background-color: #4279d8
         }
     </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script   src="https://code.jquery.com/jquery-3.2.1.slim.min.js"   integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="   crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
-
 <body class="hp vasq" onload="try{if(!google.j.b){document.f&amp;&amp;document.f.q.focus();document.gbqf&amp;&amp;document.gbqf.q.focus();}}catch(e){}if(document.images)new Image().src='/images/nav_logo242.png'" id="gsr">
     <div class="ctr-p" id="viewport">
         <div data-jiis="cc" id="doc-info"></div>
@@ -3160,7 +3164,7 @@
                                 <div class="sbibod" id="sfdiv">
                                     <button class="sbico-c" value="Search" aria-label="Search" id="_fZl" type="submit"><span class="sbico _wtf _Qtf"><svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></span></button>
                                     <div class="lst-c">
-                                        <input class="lst lst-tbb sbibps" id="lst-ib" maxlength="2048" name="query" autocomplete="off" title="Search" type="text" value="" aria-label="Rech." autofocus>
+                                        <input class="lst lst-tbb sbibps" id="lst-ib" maxlength="2048" name="query" autocomplete="off" title="Search" type="text" value="" aria-label="Rech." autofocus placeholder="Type a query (example: France)">
                                     </div>
                                 </div>
                             </div>
@@ -3408,10 +3412,40 @@
                 <div id="footcnt">
                     <div class="_dQc _E2" id="fbar">
                         <div class="fbar"> <span id="fsr">
-                            </span> <span id="fsl"> <a class="_Gs" href="https://www.byprog.com/en" target="_blank">Byprog</a> <a class="_Gs" href="https://github.com/AnthonySigogne/web-search-engine" target="_blank">About this tool</a> </span> </div>
+                            </span> <span id="fsl"> <a class="_Gs" href="https://www.byprog.com/en" target="_blank">Byprog</a> <a class="_Gs" href="https://github.com/AnthonySigogne/web-search-engine" target="_blank">About this tool</a> <a class="_Gs" href="#" data-toggle="modal" data-target="#myModal">Help</a></span> </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Simple search engine tool</h4>
+              </div>
+              <div class="modal-body">
+                The goal is to index an infinite list of URLs (web pages), and then be able to quickly search relevant URLs against a query.
+                <br/><br/>
+                <b>Indexing</b><br/>
+                The indexing operation of a new URL first crawls URL, then extracts the title and main text content from the page.
+                Then, a new document representing the URL's data is saved in ElasticSearch, and goes for indexing.
+                <br/><br/>
+                <b>Searching</b><br/>
+                When searching for relevant URLs, the engine will compare the query with the data of each document (web page), and retrieve a list of URLs matching the query, sorted by relevance.
+                <br/><br/>
+                <b>Note</b>
+                <br/>This API works for a finite list of languages, see <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-lang-analyzer.html" target="_blank">here</a> for the complete list.
+                <br/><br/>
+                <b>Demo</b><br/>
+                About 500 French URLs and 500 English URLs of the news network <a href="http://www.france24.com/" target="_blank">France24</a> have been indexed.
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
         </div>
         <div data-jibp="h" data-jiis="uc" id="footc">
             <div id="xfoot">
