@@ -4187,7 +4187,7 @@
                                 <div>
                                   <div class="rc">
                                     <h3 class="r">
-                                      <a href="{{result.url}}">{{result.title}}
+                                      <a href="{{result.url}}">{{result.title|safe}}
                                       </a>
                                     </h3>
                                     <div class="s">
@@ -4196,7 +4196,7 @@
                                           <cite class="_Rm bc">{{result.url}}
                                           </cite>
                                         </div>
-                                        <span class="st">{{result.description}}
+                                        <span class="st">{{result.description|safe}}
                                         </span>
                                       </div>
                                     </div>

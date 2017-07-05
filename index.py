@@ -48,7 +48,8 @@ def search():
             r = requests.post('http://%s:%s/search'%(host, port), data = {
                 'query':query,
                 'hits':hits,
-                'start':start
+                'start':start,
+                'highlight':1
             })
         except :
             return "Error, check your installation"
