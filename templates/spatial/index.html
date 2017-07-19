@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<!--
+	Spatial by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+
+	<head>
+		<title>CaledoSearch by BYPROG</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="static/spatial/assets/css/main.css" />
+		<link rel="stylesheet" href="static/spatial/assets/css/paginate.css" />
+	</head>
+
+	<body class="landing">
+
+		<!-- HOME -->
+		{%if not query%}
+		<section id="banner">
+			<h2>CaledoSearch</h2>
+			<p>Le moteur de recherche calédonien</p>
+			<ul class="actions">
+				<li>
+					<form action="/" method="GET" name="search" role="search">
+						<input id="query" name="query" type="text" value="" placeholder="Vous recherchez ?"/>
+					</form>
+				</li>
+			</ul>
+		</section>
+		{%endif%}
+
+		<!-- RESULTS -->
+		{%if query%}
+		<section id="three" class="wrapper style1">
+			<div class="image rounded" style="float:left;margin-left:30px;top:-20px;margin-right:20px">
+				<a href="/"><img src="static/spatial/images/caledonie.jpg" alt="" style="width:100px;height:100px"/></a>
+			</div>
+			<div class="container">
+				<form action="/" method="GET" name="search" role="search">
+					<header class="major special">
+						<input name="query" id="query" type="text" style="display:none" value="{{query}}"></input>
+						<h2 id="queryeditable" contenteditable="true">{{query}} <svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></h2>
+						<p>About {{total}} results ({{response_time}} seconds)</p>
+					</header>
+				</form>
+				<div class="feature-grid">
+					{%for result in results%}
+					<div class="feature">
+						<div class="image rounded">
+							<img style="{%if not result.thumbnail%}visibility:hidden{%endif%}" src="{{result.thumbnail}}" alt="" />
+						</div>
+						<div class="content">
+							<header>
+								<h4><a href="{{result.url}}">{{result.title|safe|truncate_title}}</a></h4>
+								<p>{{result.url|truncate_url}}</p>
+							</header>
+							<p>{{result.description|safe|truncate_description}}</p>
+						</div>
+					</div>
+					{%endfor%}
+				</div>
+			</div>
+
+			<div class="pagination-container wow zoomIn mar-b-1x" data-wow-duration="0.5s">
+
+				<ul class="pagination">
+					<li class="pagination-item--wide first">
+						<a class="pagination-link--wide first {%if page==0%}disabled{%endif%}" href="/?query={{query}}&start={{(page-1)*hits}}&hits={{hits}}">Previous</a>
+					</li>
+					{% for i in range_pages %}
+					<li class="pagination-item {%if page == i%}is-active{%endif%} {%if loop.index0 == 0%}first-number{%endif%}">
+						<a class="pagination-link" href="/?query={{query}}&start={{i*hits}}&hits={{hits}}">{{i+1}}</a>
+					</li>
+					{% endfor %}
+					<li class="pagination-item--wide last">
+						<a class="pagination-link--wide last {%if page==maxpage%}disabled{%endif%}" href="/?query={{query}}&start={{(page+1)*hits}}&hits={{hits}}">Next</a>
+					</li>
+				</ul>
+
+			</div>
+
+		</section>
+
+		<!-- WEBSITE REFERENCING -->
+		<section id="four" class="wrapper style3 special">
+			<div class="container">
+				<header class="major">
+					<h2>Un site n'est pas référencé ?</h2>
+				</header>
+				<form method="post" name="reference" method="POST" action="#">
+					<div class="row uniform 50%">
+						<div class="4u 12u$(xsmall)">
+							<input type="text" name="url" value="" placeholder="URL du site" />
+						</div>
+						<div class="4u$ 12u$(xsmall)">
+							<input type="email" name="email" value="" placeholder="Email" />
+						</div>
+						<div class="4u$ 12u$(xsmall)" style="clear:none;">
+							<input type="submit" value="Envoyer" class="special small" />
+						</div>
+					</div>
+				</form>
+			</div>
+		</section>
+		{%endif%}
+
+		<!-- ABOUT -->
+		<!--section id="four" class="wrapper style3 special">
+			<div class="container">
+				<header class="major">
+					<h2>Votre site n'est pas référencé ?</h2>
+				</header>
+				<ul class="actions">
+					<li><a href="#" class="button special big">Get in touch</a></li>
+				</ul>
+			</div>
+		</section-->
+
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="container">
+				<ul class="icons">
+					<li><a href="https://www.byprog.com" target="_blank" class="icon fa-globe"></a></li>
+					<li><a href="https://www.linkedin.com/in/anthonysigogne/" target="_blank" class="icon fa-linkedin"></a></li>
+					<li><a href="https://github.com/AnthonySigogne" target="_blank" class="icon fa-github"></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; Byprog - Anthony Sigogne</li>
+					<!--li>Design: <a href="http://templated.co">TEMPLATED</a></li-->
+				</ul>
+			</div>
+		</footer>
+
+		<!-- Scripts -->
+		<script src="static/spatial/assets/js/jquery.min.js"></script>
+		<script src="static/spatial/assets/js/skel.min.js"></script>
+		<script src="static/spatial/assets/js/util.js"></script>
+		<script src="static/spatial/assets/js/main.js"></script>
+		<script src="static/spatial/assets/js/paginate.js"></script>
+
+	</body>
+</html>
